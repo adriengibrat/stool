@@ -27,24 +27,16 @@ th.th-result {
 	width: 200px;
 }
 
-th.th-remove {
-	width: 0;
-}
-
 td.inputs {
 	padding-right: 1em;
 }
 
-.remove {
-	position: absolute;
-	margin-left: -6em;
-	width: 5em;
-}
-
 input, textarea {
 	margin: 0 0 1em 0;
-	width: 100%;
-	display: block;
+}
+textarea {
+	__display: block;
+	__width: 100%;
 	resize: vertical;
 }
 
