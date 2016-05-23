@@ -2,32 +2,44 @@
 <head>
 	<title>stool</title>
 	<meta name="Description" content="stool: a JavaScript benchmarking utility">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/g/chartist.js@0.9.7(chartist.min.css),semantic-ui@2.1.8(components/reset.min.css+components/form.min.css+components/button.min.css+components/label.min.css+components/input.min.css+components/card.min.css)">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/g/chartist.js@0.9.7(chartist.min.css),semantic-ui@2.1.8(components/reset.min.css+components/button.min.css+components/label.min.css+components/input.min.css+components/card.min.css),codemirror@4.5.0(codemirror.css+addon/fold/foldgutter.min.css)">
 	<link rel="stylesheet" href="style.css">
 </head>
-<body class="ui form">
-	<section class="field">
-		<h3>Setup code</h3>
-		<textarea rows="3" id="common" placeholder="Common Code"></textarea>
+<body>
+	<section class="ui two fluid stackable cards">
+		<div id="setup" class="card">
+			<textarea rows="10" id="common" placeholder="Setup Code"></textarea>
+		</div>
+		<div id="graph" class="card"></div>
 	</section>
-	<section>
-		<h3>Test cases</h3>
-		<table id="suite">
-			<tr>
-				<th class="th-case">Case</th>
-				<th class="th-result">Result</th>
-			</tr>
-		</table>
-		<a class="ui button" href="#" id="add">+ Add test case</a>
+	<section class="cases">
+		<h3>Test cases <a class="mini ui basic button" href="#" id="add" title="Add test case">cmd + t</a></h3>
+		<template id="test">
+			<div class="card test">
+				<div class="extra content ui fluid transparent input">
+					<input type="text" class="title input" placeholder="Label">
+					<a class="remove" tabindex="-1">Remove</a>
+				</div>
+				<div class="code">
+					<textarea rows="2" class="case input" placeholder="Code"></textarea>
+				</div>
+				<div class="extra content ui fluid input">
+					<span class="sparkline"></span>
+					<span class="result"></span>
+				</div>
+			</div>
+		</template>
+		<div id="suite" class="ui two fluid stackable cards"></div>
+		
 	</section>
-	<button class="ui button" id="run">Run!</button>
-	<button class="ui button" id="abort">Abort</button>
+	<button class="ui button" id="run" title="Run">cmd + r</button>
+	<button class="ui button" id="abort"title="Abort">cmd + a</button>
 	<div class="ui right labeled button">
-		<button class="ui button" id="share">Share</button>
+		<button class="ui button" id="share" title="Share">cmd + s</button>
 		<a class="ui basic left pointing label" id="share-result"></a>
 	</div>
 
-	<script src="https://cdn.jsdelivr.net/g/lodash@4.12.0,platform.js@1.3.1,benchmarkjs@2.1.0,chartist.js@0.9.7"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/g/lodash@4.12.0,platform.js@1.3.1,benchmarkjs@2.1.0,chartist.js@0.9.7,codemirror@4.5.0(codemirror.min.js+mode/javascript/javascript.js+addon/fold/foldgutter.js+addon/fold/foldcode.js+addon/display/placeholder.js)"></script>
 	<script src="stool.js"></script>
 </body>
 </html>
